@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="GuGuBang Blog">
 <meta property="og:description" content="本文记录在x86架构下用Ubuntu编译redsocks  在GitHub上获取redsocks源码 1$ git clone https://github.com/darkk/redsocks.git  安装编译所依赖的库和工具  libevent2-dev openssl  1234$ sudo apt install make$ sudo apt install gcc$ sudo apt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-22T09:55:00.362Z">
+<meta property="og:updated_time" content="2019-09-22T10:39:16.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu编译运行Redsocks">
 <meta name="twitter:description" content="本文记录在x86架构下用Ubuntu编译redsocks  在GitHub上获取redsocks源码 1$ git clone https://github.com/darkk/redsocks.git  安装编译所依赖的库和工具  libevent2-dev openssl  1234$ sudo apt install make$ sudo apt install gcc$ sudo apt">
@@ -428,6 +428,8 @@
 <li>openssl</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install make</span><br><span class="line">$ sudo apt install gcc</span><br><span class="line">$ sudo apt install libevent-dev</span><br><span class="line">$ sudo apt install openssl</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 </li>
 <li><p>编译和去除源文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> redsocks  <span class="comment"># 进入redsocks目录</span></span><br><span class="line">$ make</span><br><span class="line">$ rm -f *.c</span><br><span class="line">$ rm -f *.h</span><br></pre></td></tr></table></figure>

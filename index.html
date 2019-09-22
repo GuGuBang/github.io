@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  551
+                  622
                 </span>
               
 
@@ -589,8 +589,7 @@
 
       
         
-          
-            <p>本文记录在x86架构下用Ubuntu编译redsocks</p>
+          <p>本文记录在x86架构下用Ubuntu编译redsocks</p>
 <ol>
 <li><p>在GitHub上获取redsocks源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/darkk/redsocks.git</span><br></pre></td></tr></table></figure>
@@ -601,20 +600,16 @@
 <li>openssl</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install make</span><br><span class="line">$ sudo apt install gcc</span><br><span class="line">$ sudo apt install libevent-dev</span><br><span class="line">$ sudo apt install openssl</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编译和去除源文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> redsocks  <span class="comment"># 进入redsocks目录</span></span><br><span class="line">$ make</span><br><span class="line">$ rm -f *.c</span><br><span class="line">$ rm -f *.h</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>复制配置文件<code>redsocks.conf</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cp redsocks.conf.example redsocks.conf</span><br><span class="line">$ vi redsocks.conf</span><br><span class="line">redsocks &#123;</span><br><span class="line">	local_ip = 127.0.0.1;</span><br><span class="line">	local_port = 12345;</span><br><span class="line">	ip = 127.0.0.1;</span><br><span class="line">	port = 1080;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Ubuntu编译运行Redsocks/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </li></ol></div>
     
     
     
