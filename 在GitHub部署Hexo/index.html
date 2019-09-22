@@ -132,8 +132,10 @@
 <meta property="og:description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。 一、创建GitHub个人仓库[new repository] https://github.com/new">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-20-182239.png">
-<meta property="og:image" content="https://github.com/GuGuBang/Graphbed/raw/master/markdown/2019-09-20-182239.png">
-<meta property="og:updated_time" content="2019-09-22T11:43:33.448Z">
+<meta property="og:image" content="http://yoursite.com/images/2019-09-22-172405.png">
+<meta property="og:image" content="http://yoursite.com/在GitHub部署Hexo/images/2019-09-22-173211.png">
+<meta property="og:image" content="http://yoursite.com/在GitHub部署Hexo/images/2019-09-22-183238.png">
+<meta property="og:updated_time" content="2019-09-22T11:49:42.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在GitHub部署Hexo">
 <meta name="twitter:description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。 一、创建GitHub个人仓库[new repository] https://github.com/new">
@@ -395,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  630
+                  598
                 </span>
               
 
@@ -432,9 +434,9 @@
 
 <p>然后直接三个回车即可，默认不需要设置密码。<br>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制。</p>
 <p>打开<a href="https://link.zhihu.com/?target=https%3A//github.com/settings/keys" target="_blank" rel="noopener">GitHub_Settings_keys</a> 页面，新建new SSH Key。</p>
-<p>![](<a href="https://github.com/GuGuBang/Graphbed/raw/master/markdown/images/批注" target="_blank" rel="noopener">https://github.com/GuGuBang/Graphbed/raw/master/markdown/images/批注</a> 2019-09-22 172405.png)</p>
+<p><img src="/images/2019-09-22-172405.png" alt></p>
 <p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入<code>ssh git@github.com</code></p>
-<p><img src="https://github.com/GuGuBang/Graphbed/raw/master/markdown/2019-09-20-182239.png" alt></p>
+<p><img src="images/2019-09-22-173211.png" alt></p>
 <p>如上则说明成功。这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
 <h3 id="三、部署"><a href="#三、部署" class="headerlink" title="三、部署"></a><strong>三、部署</strong></h3><ul>
 <li><p><strong>将Github与hexo关联起来，修改站点配置文件 _config.yml</strong></p>
@@ -459,7 +461,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>强制启用https</strong></p>
-<p>![](<a href="https://github.com/GuGuBang/Graphbed/raw/master/markdown/images/批注" target="_blank" rel="noopener">https://github.com/GuGuBang/Graphbed/raw/master/markdown/images/批注</a> 2019-09-22 183238.png)</p>
+<p><img src="images/2019-09-22-183238.png" alt></p>
 </li>
 </ul>
 
