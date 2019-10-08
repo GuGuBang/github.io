@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content="GitHub Pages,hexo,">
+  <meta name="keywords" content="iptables,">
 
 
 
@@ -117,23 +117,26 @@
 
 
 
-<meta name="description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。">
-<meta name="keywords" content="GitHub Pages,hexo">
+<meta name="description" content="前言搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。">
+<meta name="keywords" content="iptables">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在GitHub部署Hexo">
-<meta property="og:url" content="http://yoursite.com/在GitHub部署Hexo/index.html">
+<meta property="og:title" content="搭建网关服务器">
+<meta property="og:url" content="http://yoursite.com/搭建网关服务器/index.html">
 <meta property="og:site_name" content="GuGuBang Blog">
-<meta property="og:description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。">
+<meta property="og:description" content="前言搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/2019-09-20-182239.png">
-<meta property="og:image" content="http://yoursite.com/images/2019-09-22-172405.png">
-<meta property="og:image" content="http://yoursite.com/images/2019-09-22-173211.png">
-<meta property="og:image" content="http://yoursite.com/images/2019-09-22-183238.png">
-<meta property="og:updated_time" content="2019-10-08T09:03:46.648Z">
+<meta property="og:image" content="http://yoursite.com/images/2019-09-24-223343.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-09-25-130014.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-09-25-130137.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-09-25-130829.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-09-25-130916.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-09-25-131102.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-09-25-131824.png">
+<meta property="og:updated_time" content="2019-10-08T09:03:46.652Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在GitHub部署Hexo">
-<meta name="twitter:description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。">
-<meta name="twitter:image" content="http://yoursite.com/images/2019-09-20-182239.png">
+<meta name="twitter:title" content="搭建网关服务器">
+<meta name="twitter:description" content="前言搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。">
+<meta name="twitter:image" content="http://yoursite.com/images/2019-09-24-223343.png">
 
 
 
@@ -163,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/在GitHub部署Hexo/">
+  <link rel="canonical" href="http://yoursite.com/搭建网关服务器/">
 
 
 
 
 
-  <title>在GitHub部署Hexo | GuGuBang Blog</title>
+  <title>搭建网关服务器 | GuGuBang Blog</title>
   
 
 
@@ -306,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/在GitHub部署Hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/搭建网关服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="GuGuBang Zu">
@@ -323,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">在GitHub部署Hexo</h1>
+          <h1 class="post-title" itemprop="name headline">搭建网关服务器</h1>
         
 
         <div class="post-meta">
@@ -335,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T22:46:33+00:00">
-                2019-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T00:00:00+00:00">
+                2019-09-24
               </time>
             
 
@@ -391,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  598
+                  593
                 </span>
               
 
@@ -416,46 +419,51 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>在上一篇博客【<a href="/树莓派3b+搭建Hexo博客">树莓派3b+搭建Hexo博客</a>】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到<a href="https://pages.github.com" target="_blank" rel="noopener">Github Pages</a> 上去，GitHub稳定且免费，比较适合静态网页的部署。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。</p>
+<p><img src="/images/2019-09-24-223343.png" alt="图1"></p>
 <a id="more"></a>
 
-<h3 id="一、创建GitHub个人仓库"><a href="#一、创建GitHub个人仓库" class="headerlink" title="一、创建GitHub个人仓库"></a><strong>一、创建GitHub个人仓库</strong></h3><p>[<a href="https://github.com/new" target="_blank" rel="noopener">new repository</a>] <a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a></p>
-<p><img src="/images/2019-09-20-182239.png" alt></p>
-<h3 id="二、配置Git"><a href="#二、配置Git" class="headerlink" title="二、配置Git"></a><strong>二、配置Git</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ apt install git</span><br><span class="line">$ git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">$ git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
+<p>在本次教程中我将记录搭建上图中的GateWayA_vm和GateWayB_vm 两个服务器。</p>
+<h3 id="创建虚拟服务器"><a href="#创建虚拟服务器" class="headerlink" title="创建虚拟服务器"></a><strong>创建虚拟服务器</strong></h3><p>基于CentOS7-Minal 镜像的最小化安装。系统安装过程不再赘述。需要注意两个网关服务器需要添加两个网卡，一个NAT模式，一个仅主机模式。</p>
+<p><img src="/images/2019-09-25-130014.png" alt></p>
+<p>​                                                                                     <em>网络适配器 NAT</em></p>
+<p><img src="/images/2019-09-25-130137.png" alt></p>
+<p>​                                                                                      <em>网络适配器2</em></p>
+<ul>
+<li><p><strong>虚拟网络编辑器</strong></p>
+<p>打开虚拟网络编辑器，用管理员身份编辑。</p>
+<p>NAT模式设置</p>
+<p><img src="/images/2019-09-25-130829.png" alt></p>
+<p><img src="/images/2019-09-25-130916.png" alt></p>
+</li>
+</ul>
+<p>  仅主机模式设置</p>
+<p>  <img src="/images/2019-09-25-131102.png" alt></p>
+<h3 id="双网卡配置"><a href="#双网卡配置" class="headerlink" title="双网卡配置"></a><strong>双网卡配置</strong></h3><p>ens33网卡对应NAT模式，ens37网卡对应Host-Only模式。</p>
+<p><img src="/images/2019-09-25-131824.png" alt></p>
+<ul>
+<li><p><strong>配置ens33网卡</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"></span><br><span class="line">	TYPE=Ethernet</span><br><span class="line">	PROXY_METHOD=none</span><br><span class="line">	BROWSER_ONLY=no</span><br><span class="line">	BOOTPROTO=static</span><br><span class="line">	<span class="comment"># BOOTPROTO=dhcp</span></span><br><span class="line">	DEFROUTE=yes                 </span><br><span class="line">	IPV4_FAILURE_FATAL=no</span><br><span class="line">	IPV6INIT=yes                   </span><br><span class="line">	IPV6_AUTOCONF=yes                                                                </span><br><span class="line">	IPV6_DEFROUTE=yes</span><br><span class="line">	IPV6_FAILURE_FATAL=no</span><br><span class="line">	IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">	NAME=ens33</span><br><span class="line">	UUID=e82ac7cd-86d2-40c0-8d33-8f8c8c94486c</span><br><span class="line">	DEVICE=ens33</span><br><span class="line">	IPADDR=192.168.10.2</span><br><span class="line">	NETMASK=255.255.255.0</span><br><span class="line">	GATEWAY=192.168.10.1</span><br><span class="line">	ONBOOT=yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>配置ens37网卡</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/sysconfig/network-scripts/ &amp;&amp; cp ifcfg-ens33 ifcfg-ens37 <span class="comment">#复制ens37配置文件</span></span><br><span class="line">$ vi /etc/sysconfig/network-scripts/ifcfg-ens37</span><br><span class="line"></span><br><span class="line">	TYPE=Ethernet</span><br><span class="line">	PROXY_METHOD=none</span><br><span class="line">	BROWSER_ONLY=no</span><br><span class="line">	BOOTPROTO=static</span><br><span class="line">	<span class="comment"># BOOTPROTO=dhcp</span></span><br><span class="line">	DEFROUTE=yes                 </span><br><span class="line">	IPV4_FAILURE_FATAL=no</span><br><span class="line">	IPV6INIT=yes                   </span><br><span class="line">	IPV6_AUTOCONF=yes                                                                </span><br><span class="line">	IPV6_DEFROUTE=yes</span><br><span class="line">	IPV6_FAILURE_FATAL=no</span><br><span class="line">	IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">	NAME=ens37</span><br><span class="line">	<span class="comment"># UUID=e82ac7cd-86d2-40c0-8d33-8f8c8c94486c</span></span><br><span class="line">	DEVICE=ens37</span><br><span class="line">	IPADDR=172.16.11.1</span><br><span class="line">	NETMASK=255.255.255.0</span><br><span class="line">	ONBOOT=yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重启网络使其配置生效</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ service network restart</span><br><span class="line">$ arp -vn   <span class="comment"># 查看静态IP地址与MAC地址的静态映射，确认网卡配置是否生效</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>配置DNS</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/resolv.conf</span><br><span class="line">	</span><br><span class="line">	nameserver  114.114.114.114</span><br><span class="line">	nameserver  8.8.8.8</span><br></pre></td></tr></table></figure>
 
-<p>生成ssh密钥文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
 
-<p>然后直接三个回车即可，默认不需要设置密码。<br>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制。</p>
-<p>打开<a href="https://link.zhihu.com/?target=https%3A//github.com/settings/keys" target="_blank" rel="noopener">GitHub_Settings_keys</a> 页面，新建new SSH Key。</p>
-<p><img src="/images/2019-09-22-172405.png" alt></p>
-<p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入<code>ssh git@github.com</code></p>
-<p><img src="/images/2019-09-22-173211.png" alt></p>
-<p>如上则说明成功。这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
-<h3 id="三、部署"><a href="#三、部署" class="headerlink" title="三、部署"></a><strong>三、部署</strong></h3><ul>
-<li><p><strong>将Github与hexo关联起来，修改站点配置文件 _config.yml</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br><span class="line"></span><br><span class="line">    deploy:</span><br><span class="line">      <span class="built_in">type</span>: git</span><br><span class="line">      repo: https://github.com/GuGuBang/github.io.git</span><br><span class="line">      branch: master</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>安装git插件</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</ul>
+<ul>
+<li><p><strong>开启Linux内核转发</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward  <span class="comment"># 临时开启内核转发，重启失效</span></span><br><span class="line"></span><br><span class="line">$ vi /etc/sysctl.conf  <span class="comment"># 永久生效</span></span><br><span class="line">	</span><br><span class="line">	net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>部署网页至Page GitHub</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean  <span class="comment"># 清除以前生成的网页文件，即public目录</span></span><br><span class="line">$ hexo hexo generate  <span class="comment"># 生成新的网页文件，在pulic目录里</span></span><br><span class="line">$ hexo hexo deploy  <span class="comment"># 将pulic目录里的文件同步至GitHub仓库</span></span><br></pre></td></tr></table></figure>
+<li><p><strong>SNAT</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -t nat -F  <span class="comment"># 冲刷掉nat表中的所有规则</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在nat表，POSTROUTING链中插入规则：将源地址(source)符合172.16.11.0/24网段的数据包从ens33网卡发出，并将数据包的源地址改为192.168.10.2，即SNAT。</span></span><br><span class="line">$ iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j SNAT --to 192.168.10.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同上，只是自动获取ens33网卡的ip地址，对于ip地址经常变动网卡非常用好。</span></span><br><span class="line">$ iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j MASQUERADE</span><br></pre></td></tr></table></figure>
 
-<p>此时你的博客已经上线，网址为 <a href="http://GuGuBang.github.io" target="_blank" rel="noopener">http://GuGuBang.github.io</a></p>
-</li>
-<li><p><strong>绑定域名 – godady</strong></p>
-<p>CNAME解析：将 <code>www.zhulewan.xyz</code> 指向 <code>GuGuBang.github.com</code></p>
-<p>坑：<a href="https://www.godaddy.com" target="_blank" rel="noopener">godaddy.com</a> 不支持 <code>zhulewan.xyz</code> 指向 <code>GuGuBang.github.com</code></p>
-</li>
-<li><p><strong>绑定域名 – GitHub</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'www.zhulewan.xyz'</span> &gt; <span class="built_in">source</span>/CNAME</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>清除缓存，重新部署</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>强制启用https</strong></p>
-<p><img src="/images/2019-09-22-183238.png" alt></p>
 </li>
 </ul>
 
@@ -475,9 +483,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/GitHub-Pages/" rel="tag"># GitHub Pages</a>
-          
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/iptables/" rel="tag"># iptables</a>
           
         </div>
       
@@ -490,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Ubuntu编译运行Redsocks/" rel="next" title="Ubuntu编译运行Redsocks">
-                <i class="fa fa-chevron-left"></i> Ubuntu编译运行Redsocks
+              <a href="/内网穿透/" rel="next" title="Linux常用命令">
+                <i class="fa fa-chevron-left"></i> Linux常用命令
               </a>
             
           </div>
@@ -500,8 +506,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Linux常用命令/" rel="prev" title="Linux常用命令">
-                Linux常用命令 <i class="fa fa-chevron-right"></i>
+              <a href="/IP网址分类/" rel="prev" title="ip网址分类">
+                ip网址分类 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -646,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、创建GitHub个人仓库"><span class="nav-number">2.</span> <span class="nav-text">一、创建GitHub个人仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、配置Git"><span class="nav-number">3.</span> <span class="nav-text">二、配置Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、部署"><span class="nav-number">4.</span> <span class="nav-text">三、部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建虚拟服务器"><span class="nav-number">2.</span> <span class="nav-text">创建虚拟服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双网卡配置"><span class="nav-number">3.</span> <span class="nav-text">双网卡配置</span></a></li></ol></div>
             
 
           </div>
