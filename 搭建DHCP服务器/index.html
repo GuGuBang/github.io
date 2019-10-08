@@ -117,19 +117,19 @@
 
 
 
-<meta name="description" content="前言上一篇博客【搭建网关服务器】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。  在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。 1. 安装dhpd服务 1$ yum install dhcp  2. 编辑配置文件 1$ vim">
+<meta name="description" content="前言上一篇博客【搭建网关服务器】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。  在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。">
 <meta name="keywords" content="DHCP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建DHCP服务器">
 <meta property="og:url" content="http://yoursite.com/搭建DHCP服务器/index.html">
 <meta property="og:site_name" content="GuGuBang Blog">
-<meta property="og:description" content="前言上一篇博客【搭建网关服务器】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。  在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。 1. 安装dhpd服务 1$ yum install dhcp  2. 编辑配置文件 1$ vim">
+<meta property="og:description" content="前言上一篇博客【搭建网关服务器】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。  在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/2019-10-09-010907.png">
-<meta property="og:updated_time" content="2019-10-08T17:29:05.019Z">
+<meta property="og:updated_time" content="2019-10-08T23:16:32.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建DHCP服务器">
-<meta name="twitter:description" content="前言上一篇博客【搭建网关服务器】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。  在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。 1. 安装dhpd服务 1$ yum install dhcp  2. 编辑配置文件 1$ vim">
+<meta name="twitter:description" content="前言上一篇博客【搭建网关服务器】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。  在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。">
 <meta name="twitter:image" content="http://yoursite.com/images/2019-10-09-010907.png">
 
 
@@ -416,6 +416,8 @@
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>上一篇博客【<a href="/搭建网关服务器/">搭建网关服务器</a>】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。</p>
 <p><img src="/images/2019-10-09-010907.png" alt></p>
 <p>在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。</p>
+<a id="more"></a>
+
 <p><strong>1. 安装dhpd服务</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install dhcp</span><br></pre></td></tr></table></figure>
 
