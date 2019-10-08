@@ -125,7 +125,7 @@
 <meta property="og:site_name" content="GuGuBang Blog">
 <meta property="og:description" content="前言Hexo 是一个开源的博客框架，本文记录在树莓派上搭建Hexo 的过程。 一、安装 Node.js 和 Hexo树莓派自带的 node.js 没有 npm，用sudo apt install npm下载的 npm 会报错，如下:(node:8449) [DEP0022] DeprecationWarning: os.tmpDir() is deprecated. Use os.tmpdir()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-08T09:03:46.652Z">
+<meta property="og:updated_time" content="2019-10-08T10:12:41.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派3b+搭建Hexo博客">
 <meta name="twitter:description" content="前言Hexo 是一个开源的博客框架，本文记录在树莓派上搭建Hexo 的过程。 一、安装 Node.js 和 Hexo树莓派自带的 node.js 没有 npm，用sudo apt install npm下载的 npm 会报错，如下:(node:8449) [DEP0022] DeprecationWarning: os.tmpDir() is deprecated. Use os.tmpdir()">
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  799
+                  795
                 </span>
               
 
@@ -414,17 +414,19 @@
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>Hexo 是一个开源的博客框架，本文记录在树莓派上搭建Hexo 的过程。</p>
 <h3 id="一、安装-Node-js-和-Hexo"><a href="#一、安装-Node-js-和-Hexo" class="headerlink" title="一、安装 Node.js 和 Hexo"></a><strong>一、安装 Node.js 和 Hexo</strong></h3><p>树莓派自带的 node.js 没有 npm，用<code>sudo apt install npm</code>下载的 npm 会报错，如下:<br>(node:8449) [DEP0022] DeprecationWarning: os.tmpDir() is deprecated. Use os.tmpdir() instead.*</p>
 <p><em><strong>PS：由于访问国外网速太慢，会导致有些步骤卡死。最好挂上代理。</strong></em></p>
-<a id="more"></a>
-
 <ul>
 <li><p><strong>卸载树莓派自带的 node.js</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove node</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>通过 nvm 安装 node.js</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载 nvm 安装脚本</span></span><br><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br><span class="line"><span class="comment"># 不用重启，使其立即生效</span></span><br><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="comment"># 查看 nvm 版本</span></span><br><span class="line">$ nvm --version</span><br><span class="line"><span class="comment"># 选择可用的 node.js 版本，这里选择 stable 即稳定版</span></span><br><span class="line">$ nvm install stable</span><br><span class="line"><span class="comment"># 查看 node.js 和 npm 版本号，看 node.js 和 npm 是否安装成功</span></span><br><span class="line">$ node -v; npm -v</span><br></pre></td></tr></table></figure>
+
 </li>
-<li><p><strong>使用 npm 安装 Hexo</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli  <span class="comment"># -g 代表全局安装 是全局安装, 跟你当前所在路径无关</span></span><br><span class="line">$ hexo init blog <span class="comment"># 初始化时网速太慢，导致卡死。删掉 blog 目录，挂上代理，重新初始化</span></span><br><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><strong>使用 npm 安装 Hexo</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli  <span class="comment"># -g 代表全局安装 是全局安装, 跟你当前所在路径无关</span></span><br><span class="line">$ hexo init blog <span class="comment"># 初始化时网速太慢，导致卡死。删掉 blog 目录，挂上代理，重新初始化</span></span><br><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -451,8 +453,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/blog</span><br><span class="line">$ hexo new page categories</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置页面类型</span></span><br><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2014-12-22 12:39:04</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"categories"</span></span><br><span class="line">comments: <span class="literal">false</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>设置字体</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">font:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 外链字体库地址，例如 //fonts.googleapis.com (默认值)</span></span><br><span class="line">  host:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 全局字体，应用在 body 元素上</span></span><br><span class="line">  global:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family: Monda</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 标题字体 (h1, h2, h3, h4, h5, h6)</span></span><br><span class="line">  headings:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family: Roboto Slab</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 文章字体</span></span><br><span class="line">  posts:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Logo 字体</span></span><br><span class="line">  logo:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family: Lobster Two</span><br><span class="line">    size: 24</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代码字体，应用于 code 以及代码块</span></span><br><span class="line">  codes:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family: PT Mono</span><br><span class="line">    size: 16</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">font:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 外链字体库地址，例如 //fonts.googleapis.com (默认值)</span></span><br><span class="line">  host:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 全局字体，应用在 body 元素上</span></span><br><span class="line">  global:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family: Monda</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 标题字体 (h1, h2, h3, h4, h5, h6)</span></span><br><span class="line">  headings:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family: Roboto Slab</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 文章字体</span></span><br><span class="line">  posts:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Logo 字体</span></span><br><span class="line">  logo:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    size: 24</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代码字体，应用于 code 以及代码块</span></span><br><span class="line">  codes:</span><br><span class="line">    external: <span class="literal">true</span></span><br><span class="line">    family: PT Mono</span><br><span class="line">    size: 16</span><br></pre></td></tr></table></figure>
+
+
 </li>
+</ul>
+<ul>
 <li><p><strong>下载字数统计模块</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ npm install hexo-wordcount --save</span><br><span class="line"></span><br><span class="line">$ vi themes/next/_config.yml</span><br><span class="line"></span><br><span class="line">    post_wordcount:</span><br><span class="line">      item_text: <span class="literal">true</span></span><br><span class="line">      wordcount: <span class="literal">true</span></span><br><span class="line">      min2read: <span class="literal">false</span></span><br><span class="line">      totalcount: <span class="literal">true</span></span><br><span class="line">      separated_meta: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -688,7 +694,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.6k</span>
+    <span title="Site words total count">8.7k</span>
   
 </div>
 

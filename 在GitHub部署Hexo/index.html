@@ -117,22 +117,22 @@
 
 
 
-<meta name="description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。">
+<meta name="description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。 一、创建GitHub个人仓库[new repository] https://github.com/new">
 <meta name="keywords" content="GitHub Pages,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在GitHub部署Hexo">
 <meta property="og:url" content="http://yoursite.com/在GitHub部署Hexo/index.html">
 <meta property="og:site_name" content="GuGuBang Blog">
-<meta property="og:description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。">
+<meta property="og:description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。 一、创建GitHub个人仓库[new repository] https://github.com/new">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-20-182239.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-22-172405.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-22-173211.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-22-183238.png">
-<meta property="og:updated_time" content="2019-10-08T09:03:46.648Z">
+<meta property="og:updated_time" content="2019-10-08T10:12:41.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在GitHub部署Hexo">
-<meta name="twitter:description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。">
+<meta name="twitter:description" content="前言在上一篇博客【树莓派3b+搭建Hexo博客】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到Github Pages 上去，GitHub稳定且免费，比较适合静态网页的部署。 一、创建GitHub个人仓库[new repository] https://github.com/new">
 <meta name="twitter:image" content="http://yoursite.com/images/2019-09-20-182239.png">
 
 
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  598
+                  600
                 </span>
               
 
@@ -417,11 +417,11 @@
 
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>在上一篇博客【<a href="/树莓派3b+搭建Hexo博客">树莓派3b+搭建Hexo博客</a>】已经介绍了如何在本地搭建Hexo，接下来将生成的网页文件部署到<a href="https://pages.github.com" target="_blank" rel="noopener">Github Pages</a> 上去，GitHub稳定且免费，比较适合静态网页的部署。</p>
-<a id="more"></a>
-
 <h3 id="一、创建GitHub个人仓库"><a href="#一、创建GitHub个人仓库" class="headerlink" title="一、创建GitHub个人仓库"></a><strong>一、创建GitHub个人仓库</strong></h3><p>[<a href="https://github.com/new" target="_blank" rel="noopener">new repository</a>] <a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a></p>
 <p><img src="/images/2019-09-20-182239.png" alt></p>
-<h3 id="二、配置Git"><a href="#二、配置Git" class="headerlink" title="二、配置Git"></a><strong>二、配置Git</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ apt install git</span><br><span class="line">$ git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">$ git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h3 id="二、配置Git"><a href="#二、配置Git" class="headerlink" title="二、配置Git**"></a>二、配置Git**</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ apt install git</span><br><span class="line">$ git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">$ git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
 
 <p>生成ssh密钥文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
@@ -434,7 +434,7 @@
 <p>如上则说明成功。这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
 <h3 id="三、部署"><a href="#三、部署" class="headerlink" title="三、部署"></a><strong>三、部署</strong></h3><ul>
 <li><p><strong>将Github与hexo关联起来，修改站点配置文件 _config.yml</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br><span class="line"></span><br><span class="line">    deploy:</span><br><span class="line">      <span class="built_in">type</span>: git</span><br><span class="line">      repo: https://github.com/GuGuBang/github.io.git</span><br><span class="line">      branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br><span class="line"></span><br><span class="line">    deploy:</span><br><span class="line">      <span class="built_in">type</span>: git</span><br><span class="line">      repo: git@github.com:GuGuBang/gugubang.github.io.git</span><br><span class="line">      branch: master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>安装git插件</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
@@ -646,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、创建GitHub个人仓库"><span class="nav-number">2.</span> <span class="nav-text">一、创建GitHub个人仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、配置Git"><span class="nav-number">3.</span> <span class="nav-text">二、配置Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、部署"><span class="nav-number">4.</span> <span class="nav-text">三、部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、创建GitHub个人仓库"><span class="nav-number">2.</span> <span class="nav-text">一、创建GitHub个人仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、配置Git"><span class="nav-number">3.</span> <span class="nav-text">二、配置Git**</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、部署"><span class="nav-number">4.</span> <span class="nav-text">三、部署</span></a></li></ol></div>
             
 
           </div>
@@ -680,7 +680,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.6k</span>
+    <span title="Site words total count">8.7k</span>
   
 </div>
 

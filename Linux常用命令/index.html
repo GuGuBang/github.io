@@ -117,19 +117,19 @@
 
 
 
-<meta name="description" content="前言以前学习Linux一直没有做笔记的习惯，很多常用的命令总是记不住，每次要用到都要去谷歌去查，效率很低。现在把常用的命令记录在自己的博客上，方便自己使用。">
+<meta name="description" content="前言以前学习Linux一直没有做笔记的习惯，很多常用的命令总是记不住，每次要用到都要去谷歌去查，效率很低。现在把常用的命令记录在自己的博客上，方便自己使用。 常用命令123456789101112131415161718# -----查看系统版本命令------$ lsb_release -a$ cat /etc/issue  # ubuntu$ cat /etc/redhat-release">
 <meta name="keywords" content="command">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用命令">
 <meta property="og:url" content="http://yoursite.com/Linux常用命令/index.html">
 <meta property="og:site_name" content="GuGuBang Blog">
-<meta property="og:description" content="前言以前学习Linux一直没有做笔记的习惯，很多常用的命令总是记不住，每次要用到都要去谷歌去查，效率很低。现在把常用的命令记录在自己的博客上，方便自己使用。">
+<meta property="og:description" content="前言以前学习Linux一直没有做笔记的习惯，很多常用的命令总是记不住，每次要用到都要去谷歌去查，效率很低。现在把常用的命令记录在自己的博客上，方便自己使用。 常用命令123456789101112131415161718# -----查看系统版本命令------$ lsb_release -a$ cat /etc/issue  # ubuntu$ cat /etc/redhat-release">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-22-215236.png">
-<meta property="og:updated_time" content="2019-10-08T09:03:46.640Z">
+<meta property="og:updated_time" content="2019-10-08T10:12:41.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令">
-<meta name="twitter:description" content="前言以前学习Linux一直没有做笔记的习惯，很多常用的命令总是记不住，每次要用到都要去谷歌去查，效率很低。现在把常用的命令记录在自己的博客上，方便自己使用。">
+<meta name="twitter:description" content="前言以前学习Linux一直没有做笔记的习惯，很多常用的命令总是记不住，每次要用到都要去谷歌去查，效率很低。现在把常用的命令记录在自己的博客上，方便自己使用。 常用命令123456789101112131415161718# -----查看系统版本命令------$ lsb_release -a$ cat /etc/issue  # ubuntu$ cat /etc/redhat-release">
 <meta name="twitter:image" content="http://yoursite.com/images/2019-09-22-215236.png">
 
 
@@ -414,9 +414,9 @@
 
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>以前学习Linux一直没有做笔记的习惯，很多常用的命令总是记不住，每次要用到都要去谷歌去查，效率很低。现在把常用的命令记录在自己的博客上，方便自己使用。</p>
-<a id="more"></a>
-
 <h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a><strong>常用命令</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -----查看系统版本命令------</span></span><br><span class="line">$ lsb_release -a</span><br><span class="line">$ cat /etc/issue  <span class="comment"># ubuntu</span></span><br><span class="line">$ cat /etc/redhat-release  <span class="comment"># centos</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------------</span></span><br><span class="line">$ ln -s path/to/file_or_directory path/to/symlink  <span class="comment"># 软链接</span></span><br><span class="line">$ ln -sf path/to/new_file path/to/symlink          <span class="comment"># 强制创建软连接</span></span><br><span class="line">$ ln path/to/file path/to/hardlink                 <span class="comment"># 硬链接</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ------主机名相关设置-------</span></span><br><span class="line">$ hostnamectl status  <span class="comment">#查看状态</span></span><br><span class="line">$ hostnamectl <span class="built_in">set</span>-hosname <span class="string">"hostname"</span>  <span class="comment"># 设置主机名</span></span><br><span class="line">$ vi /etc/hostname  <span class="comment"># 配置文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------时钟-------------</span></span><br><span class="line">$ hwclock -s  <span class="comment"># 硬件时钟向系统时钟同步</span></span><br><span class="line">$ hwclock -w  <span class="comment"># 系统时钟向硬件时钟同步</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a><strong>tar</strong></h3><ul>
 <li><p><strong>例子</strong></p>
@@ -977,7 +977,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.6k</span>
+    <span title="Site words total count">8.7k</span>
   
 </div>
 
