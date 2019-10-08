@@ -301,6 +301,350 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/搭建dnsmasq服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GuGuBang Zu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GuGuBang Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/搭建dnsmasq服务器/" itemprop="url">搭建DHCP服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T20:43:00+00:00">
+                2019-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  130
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>在前面两篇博客中【<a href="/搭建网关服务器">搭建网关服务器</a>】和【<a href="/搭建DHCP服务器">搭建DHCP服务器</a>】，我们的模拟网络基本可以正常使用了，但是有一个问题，因为不是正常的公网，所以域名不能随便指定，要想做到域名自定义，我们需要在“公网”，即192.168.20.0子网域内，搭建一个小型的dnsmasq服务器。以下是网络拓扑图。</p>
+<p><img src="/images/2019-10-09-010907.png" alt></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/搭建dnsmasq服务器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/搭建DHCP服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GuGuBang Zu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GuGuBang Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/搭建DHCP服务器/" itemprop="url">搭建DHCP服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T00:00:00+00:00">
+                2019-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  244
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>上一篇博客【<a href="/搭建网关服务器/">搭建网关服务器</a>】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。</p>
+<p><img src="/images/2019-10-09-010907.png" alt></p>
+<p>在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。</p>
+<p><strong>1. 安装dhpd服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install dhcp</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 编辑配置文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/dhcp/dhcpd.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># DHCP Server Configuration file.</span></span><br><span class="line"><span class="comment">#   see /usr/share/doc/dhcp*/dhcpd.conf.example</span></span><br><span class="line"><span class="comment">#   see dhcpd.conf(5) man page</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">ddns-update-style interim;</span><br><span class="line">subnet 172.16.11.0 netmask 255.255.255.0 &#123;</span><br><span class="line">        option routers                  172.16.11.1;</span><br><span class="line">        option subnet-mask              255.255.255.0;</span><br><span class="line">        option domain-name-servers       114.114.114.114, 8.8.8.8;</span><br><span class="line">        range 172.16.11.10 172.16.11.99;</span><br><span class="line">        default-lease-time 3600;</span><br><span class="line">        max-lease-time 7200;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 重启dhcpd</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl start dhcpd</span><br><span class="line">$ systemctl <span class="built_in">enable</span> dhcpd</span><br><span class="line">$ systemctl status dhcpd   <span class="comment"># 查看服务状态</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/IP网址分类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -556,7 +900,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  593
+                  650
                 </span>
               
 
@@ -583,7 +927,7 @@
       
         
           <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。</p>
-<p><img src="/images/2019-09-24-223343.png" alt="图1"></p>
+<p><img src="/images/2019-10-09-010907.png" alt="图1"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/搭建网关服务器/#more" rel="contents">
@@ -656,7 +1000,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/内网穿透/" itemprop="url">Linux常用命令</a></h1>
+                <a class="post-title-link" href="/内网穿透/" itemprop="url">Linux内网穿透</a></h1>
         
 
         <div class="post-meta">
@@ -1529,7 +1873,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1551,7 +1895,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1612,7 +1956,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.7k</span>
+    <span title="Site words total count">9.1k</span>
   
 </div>
 

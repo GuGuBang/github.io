@@ -125,18 +125,18 @@
 <meta property="og:site_name" content="GuGuBang Blog">
 <meta property="og:description" content="前言搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/2019-09-24-223343.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-10-09-010907.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-130014.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-130137.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-130829.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-130916.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-131102.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-131824.png">
-<meta property="og:updated_time" content="2019-10-08T10:25:17.036Z">
+<meta property="og:updated_time" content="2019-10-08T17:23:44.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建网关服务器">
 <meta name="twitter:description" content="前言搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。">
-<meta name="twitter:image" content="http://yoursite.com/images/2019-09-24-223343.png">
+<meta name="twitter:image" content="http://yoursite.com/images/2019-10-09-010907.png">
 
 
 
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  593
+                  650
                 </span>
               
 
@@ -420,11 +420,11 @@
 
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。</p>
-<p><img src="/images/2019-09-24-223343.png" alt="图1"></p>
+<p><img src="/images/2019-10-09-010907.png" alt="图1"></p>
 <a id="more"></a>
 
-<p>在本次教程中我将记录搭建上图中的GateWayA_vm和GateWayB_vm 两个服务器。</p>
-<h3 id="创建虚拟服务器"><a href="#创建虚拟服务器" class="headerlink" title="创建虚拟服务器"></a><strong>创建虚拟服务器</strong></h3><p>基于CentOS7-Minal 镜像的最小化安装。系统安装过程不再赘述。需要注意两个网关服务器需要添加两个网卡，一个NAT模式，一个仅主机模式。</p>
+<p>在本次教程中我将记录搭建上图中的GateWayA_vm服务器，GateWayB_vm搭建过程同理。</p>
+<h3 id="一、创建虚拟服务器"><a href="#一、创建虚拟服务器" class="headerlink" title="一、创建虚拟服务器"></a><strong>一、创建虚拟服务器</strong></h3><p>基于CentOS7-Minal 镜像的最小化安装。系统安装过程不再赘述。需要注意两个网关服务器需要添加两个网卡，一个NAT模式，一个仅主机模式。</p>
 <p><img src="/images/2019-09-25-130014.png" alt></p>
 <p>​                                                                                     <em>网络适配器 NAT</em></p>
 <p><img src="/images/2019-09-25-130137.png" alt></p>
@@ -439,7 +439,7 @@
 </ul>
 <p>  仅主机模式设置</p>
 <p>  <img src="/images/2019-09-25-131102.png" alt></p>
-<h3 id="双网卡配置"><a href="#双网卡配置" class="headerlink" title="双网卡配置"></a><strong>双网卡配置</strong></h3><p>ens33网卡对应NAT模式，ens37网卡对应Host-Only模式。</p>
+<h3 id="二、双网卡配置"><a href="#二、双网卡配置" class="headerlink" title="二、双网卡配置"></a><strong>二、双网卡配置</strong></h3><p>ens33网卡对应NAT模式，ens37网卡对应Host-Only模式。</p>
 <p><img src="/images/2019-09-25-131824.png" alt></p>
 <ul>
 <li><p><strong>配置ens33网卡</strong></p>
@@ -462,7 +462,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward  <span class="comment"># 临时开启内核转发，重启失效</span></span><br><span class="line"></span><br><span class="line">$ vi /etc/sysctl.conf  <span class="comment"># 永久生效</span></span><br><span class="line">	</span><br><span class="line">	net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>SNAT</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -t nat -F  <span class="comment"># 冲刷掉nat表中的所有规则</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在nat表，POSTROUTING链中插入规则：将源地址(source)符合172.16.11.0/24网段的数据包从ens33网卡发出，并将数据包的源地址改为192.168.10.2，即SNAT。</span></span><br><span class="line">$ iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j SNAT --to 192.168.10.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同上，只是自动获取ens33网卡的ip地址，对于ip地址经常变动网卡非常用好。</span></span><br><span class="line">$ iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -t nat -F  <span class="comment"># 冲刷掉nat表中的所有规则</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在nat表，POSTROUTING链中插入规则：将源地址(source)符合172.16.11.0/24网段的数据包从ens33网卡发出，并将数据包的源地址改为192.168.10.2，即SNAT。</span></span><br><span class="line">$ iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j SNAT --to 192.168.10.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同上，只是自动获取ens33网卡的ip地址，对于ip地址经常变动网卡非常用好。</span></span><br><span class="line">$ iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j MASQUERADE</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看配置是否生效</span></span><br><span class="line">$ iptables -t nat -vnxL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>开机自启</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod +x /etc/rc.d/rc.local</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">'iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j SNAT --to 192.168.10.2'</span> &gt; /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -496,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/内网穿透/" rel="next" title="Linux常用命令">
-                <i class="fa fa-chevron-left"></i> Linux常用命令
+              <a href="/内网穿透/" rel="next" title="Linux内网穿透">
+                <i class="fa fa-chevron-left"></i> Linux内网穿透
               </a>
             
           </div>
@@ -587,7 +590,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -609,7 +612,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -652,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建虚拟服务器"><span class="nav-number">2.</span> <span class="nav-text">创建虚拟服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双网卡配置"><span class="nav-number">3.</span> <span class="nav-text">双网卡配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、创建虚拟服务器"><span class="nav-number">2.</span> <span class="nav-text">一、创建虚拟服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、双网卡配置"><span class="nav-number">3.</span> <span class="nav-text">二、双网卡配置</span></a></li></ol></div>
             
 
           </div>
@@ -686,7 +689,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.7k</span>
+    <span title="Site words total count">9.1k</span>
   
 </div>
 
