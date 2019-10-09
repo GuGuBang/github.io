@@ -125,7 +125,7 @@
 <meta property="og:site_name" content="GuGuBang Blog">
 <meta property="og:description" content="本文记录在x86架构下用Ubuntu编译redsocks  在GitHub上获取redsocks源码 1$ git clone https://github.com/darkk/redsocks.git  安装编译所依赖的库和工具  libevent2-dev openssl  1234$ sudo apt install make$ sudo apt install gcc$ sudo apt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-09T08:44:15.787Z">
+<meta property="og:updated_time" content="2019-10-09T08:46:30.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu编译运行Redsocks">
 <meta name="twitter:description" content="本文记录在x86架构下用Ubuntu编译redsocks  在GitHub上获取redsocks源码 1$ git clone https://github.com/darkk/redsocks.git  安装编译所依赖的库和工具  libevent2-dev openssl  1234$ sudo apt install make$ sudo apt install gcc$ sudo apt">
@@ -428,17 +428,16 @@
 <a id="more"></a>
 
 <ol start="3">
-<li>编译后去除源文件</li>
+<li><p>编译后去除源文件</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> redsocks  <span class="comment"># 进入redsocks目录</span></span><br><span class="line">$ make</span><br><span class="line">$ rm -f *.c &amp;&amp; rm -f *.h</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制配置文件<code>redsocks.conf</code></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cp redsocks.conf.example redsocks.conf</span><br><span class="line">$ vi redsocks.conf</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redsocks &#123;</span><br><span class="line">    local_ip = 127.0.0.1;</span><br><span class="line">    local_port = 12345;</span><br><span class="line">    ip = 127.0.0.1;</span><br><span class="line">    port = 1080;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> redsocks  <span class="comment"># 进入redsocks目录</span></span><br><span class="line">$ make</span><br><span class="line">$ rm -f *.c &amp;&amp; rm -f *.h</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>复制配置文件<code>redsocks.conf</code></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cp redsocks.conf.example redsocks.conf</span><br><span class="line">$ vi redsocks.conf</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redsocks &#123;</span><br><span class="line">    local_ip = 127.0.0.1;</span><br><span class="line">    local_port = 12345;</span><br><span class="line">    ip = 127.0.0.1;</span><br><span class="line">    port = 1080;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
