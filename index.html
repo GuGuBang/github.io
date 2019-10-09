@@ -611,44 +611,14 @@
 
       
         
-          
-            <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line">$ yum install -y nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a><strong>启动</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl start nginx.service</span><br><span class="line">$ systemctl <span class="built_in">enable</span> nginx.service</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a><strong>配置</strong></h3><p>网站文件默认存放目录 <code>/usr/share/nginx/html</code></p>
-<p>网站默认站点配置 <code>/etc/nginx/conf.d/default.conf</code></p>
-<p>自定义Nginx站点配置文件存放目录 <code>/etc/nginx/conf.d/</code></p>
-<p>Nginx全局配置  <code>/etc/nginx/nginx.conf</code></p>
-<ul>
-<li><p><strong>HTTP 配置网站：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/conf.d/default.conf</span><br><span class="line">  </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">          server_name  nginx.vm;  <span class="comment"># 域名</span></span><br><span class="line">          location / &#123;</span><br><span class="line">              root    /var/www/hexo; <span class="comment"># 网站根目录</span></span><br><span class="line">              index  index.html index.htm;</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>HTTPS 配置网站：</strong></p>
-</li>
-</ul>
-<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><strong>常见问题</strong></h3><ul>
-<li><p>Nginx报403 forbidden 错误</p>
-<p>一般是三种情况：一是缺少主页文件，二是权限问题，三是SELinux状态。</p>
-<ol>
-<li><p>缺少index.html或index.php配置，检查是否配置了index</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  nginx.vm;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root    /var/www/hexo;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解决办法：修改web目录的读写权限，或者是把nginx的启动用户改成目录的所属用户，重启Nginx即可解决</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod -R 755 /var/www/hexo/</span><br></pre></td></tr></table></figure>
-
-<p>把nginx的启动用户改成目录的所属用户方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">	<span class="comment"># user nginx;</span></span><br><span class="line">	user root;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>SELinux设置为开启状态（enabled）的原因，改完之后重启解决。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/selinux/config</span><br><span class="line">	</span><br><span class="line">	SELINUX=disabled</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ul>
-
-          
+          <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line">$ yum install -y nginx</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/搭建Nginx服务器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
