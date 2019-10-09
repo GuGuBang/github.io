@@ -131,8 +131,9 @@
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-130829.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-130916.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-131102.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-10-09-174656.png">
 <meta property="og:image" content="http://yoursite.com/images/2019-09-25-131824.png">
-<meta property="og:updated_time" content="2019-10-09T08:48:10.859Z">
+<meta property="og:updated_time" content="2019-10-09T15:23:38.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建网关服务器">
 <meta name="twitter:description" content="前言搭建网关服务器是构建VMware服务器集群的第一步，有了网关服务器后就可以搭建一个完全在VMware中的独立内网，从而可以模拟外网的一切功能。以下是网络拓扑图。  在本次教程中我将记录搭建上图中的GateWayA_vm服务器，GateWayB_vm搭建过程同理。">
@@ -394,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  660
+                  634
                 </span>
               
 
@@ -432,26 +433,48 @@
 <ul>
 <li><p><strong>虚拟网络编辑器</strong></p>
 <p>打开虚拟网络编辑器，用管理员身份编辑。</p>
-<p>NAT模式设置</p>
+<ol>
+<li>NAT模式设置</li>
+</ol>
 <p><img src="/images/2019-09-25-130829.png" alt></p>
 <p><img src="/images/2019-09-25-130916.png" alt></p>
 </li>
 </ul>
-<p>  仅主机模式设置</p>
-<p>  <img src="/images/2019-09-25-131102.png" alt></p>
+<ol start="2">
+<li><p>仅主机模式设置</p>
+<p><img src="/images/2019-09-25-131102.png" alt></p>
+</li>
+</ol>
+<ol start="3">
+<li><p>设置Window10上的vmnet1网卡</p>
+<p><img src="/images/2019-10-09-174656.png" alt></p>
+</li>
+</ol>
 <h3 id="二、双网卡配置"><a href="#二、双网卡配置" class="headerlink" title="二、双网卡配置"></a><strong>二、双网卡配置</strong></h3><p>ens33网卡对应NAT模式，ens37网卡对应Host-Only模式。</p>
 <p><img src="/images/2019-09-25-131824.png" alt></p>
 <ul>
 <li><p><strong>配置ens33网卡</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"></span><br><span class="line">	TYPE=Ethernet</span><br><span class="line">	PROXY_METHOD=none</span><br><span class="line">	BROWSER_ONLY=no</span><br><span class="line">	<span class="comment"># BOOTPROTO=dhcp</span></span><br><span class="line">	BOOTPROTO=static</span><br><span class="line">	IPADDR=192.168.10.2</span><br><span class="line">	NETMASK=255.255.255.0</span><br><span class="line">	GATEWAY=192.168.10.1</span><br><span class="line">	DEFROUTE=yes                 </span><br><span class="line">	IPV4_FAILURE_FATAL=no</span><br><span class="line">	IPV6INIT=yes                   </span><br><span class="line">	IPV6_AUTOCONF=yes                                                                </span><br><span class="line">	IPV6_DEFROUTE=yes</span><br><span class="line">	IPV6_FAILURE_FATAL=no</span><br><span class="line">	IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">	NAME=ens33</span><br><span class="line">	UUID=e82ac7cd-86d2-40c0-8d33-8f8c8c94486c</span><br><span class="line">	DEVICE=ens33</span><br><span class="line">	ONBOOT=yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"><span class="comment"># BOOTPROTO=dhcp</span></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">IPADDR=192.168.10.2</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.10.1</span><br><span class="line">DEFROUTE=yes                 </span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes                   </span><br><span class="line">IPV6_AUTOCONF=yes                                                                </span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens33</span><br><span class="line">UUID=e82ac7cd-86d2-40c0-8d33-8f8c8c94486c</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=yes</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
+</ul>
+<ul>
 <li><p><strong>配置ens37网卡</strong></p>
-<p>内网网卡使用dhcp服务器配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/sysconfig/network-scripts/ &amp;&amp; cp ifcfg-ens33 ifcfg-ens37 <span class="comment">#复制ens37配置文件</span></span><br><span class="line">$ vi /etc/sysconfig/network-scripts/ifcfg-ens37</span><br><span class="line"></span><br><span class="line">	TYPE=Ethernet</span><br><span class="line">	PROXY_METHOD=none</span><br><span class="line">	BROWSER_ONLY=no</span><br><span class="line">	<span class="comment"># BOOTPROTO=static</span></span><br><span class="line">	BOOTPROTO=dhcp</span><br><span class="line">	DEFROUTE=yes                 </span><br><span class="line">	IPV4_FAILURE_FATAL=no</span><br><span class="line">	IPV6INIT=yes                   </span><br><span class="line">	IPV6_AUTOCONF=yes                                                                </span><br><span class="line">	IPV6_DEFROUTE=yes</span><br><span class="line">	IPV6_FAILURE_FATAL=no</span><br><span class="line">	IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">	NAME=ens37</span><br><span class="line">	<span class="comment"># UUID=e82ac7cd-86d2-40c0-8d33-8f8c8c94486c</span></span><br><span class="line">	DEVICE=ens37</span><br><span class="line">	ONBOOT=yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/sysconfig/network-scripts/ &amp;&amp; cp ifcfg-ens33 ifcfg-ens37 <span class="comment">#复制ens37配置文件</span></span><br><span class="line">$ vi /etc/sysconfig/network-scripts/ifcfg-ens37</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"><span class="comment"># BOOTPROTO=dhcp</span></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">IPADDR=172.16.11.1</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">DEFROUTE=yes                 </span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes                   </span><br><span class="line">IPV6_AUTOCONF=yes                                                                </span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens37</span><br><span class="line"><span class="comment"># UUID=e82ac7cd-86d2-40c0-8d33-8f8c8c94486c</span></span><br><span class="line">DEVICE=ens37</span><br><span class="line">ONBOOT=yes</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>设置DNS</strong></p>
-<p>DNS由DHCP服务器设置，请参看【<a href="/搭建DHCP服务器">搭建DHCP服务器</a>】</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/resolv.conf</span><br><span class="line"></span><br><span class="line">	nameserver 192.168.10.254</span><br></pre></td></tr></table></figure>
+
+
 </li>
+</ul>
+<ul>
 <li><p><strong>重启网络使其配置生效</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ service network restart</span><br><span class="line">$ arp -vn   <span class="comment"># 查看静态IP地址与MAC地址的静态映射，确认网卡配置是否生效</span></span><br><span class="line">$ route -n	<span class="comment"># 查看网关配置是否生效</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -462,7 +485,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -t nat -F  <span class="comment"># 冲刷掉nat表中的所有规则</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在nat表，POSTROUTING链中插入规则：将源地址(source)符合172.16.11.0/24网段的数据包从ens33网卡发出，并将数据包的源地址改为192.168.10.2，即SNAT。</span></span><br><span class="line">$ iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j SNAT --to 192.168.10.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同上，只是自动获取ens33网卡的ip地址，对于ip地址经常变动网卡非常用好。</span></span><br><span class="line">$ iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j MASQUERADE</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看配置是否生效</span></span><br><span class="line">$ iptables -t nat -vnxL</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>开机自启</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod +x /etc/rc.d/rc.local</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">'iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j MASQUERADE &gt; /etc/rc.d/rc.local</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod +x /etc/rc.d/rc.local</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">'iptables -t nat -I POSTROUTING -s 172.16.11.0/24 -o ens33 -j MASQUERADE &gt;&gt; /etc/rc.d/rc.local</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -587,7 +610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -609,7 +632,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -686,7 +709,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.6k</span>
+    <span title="Site words total count">9.8k</span>
   
 </div>
 
