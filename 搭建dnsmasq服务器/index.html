@@ -126,7 +126,7 @@
 <meta property="og:description" content="前言在前面两篇博客中【搭建网关服务器】和【搭建DHCP服务器】，我们的模拟网络基本可以正常使用了，但是有一个问题，因为不是正常的公网，所以域名不能随便指定，要想做到域名自定义，我们需要在“公网”，即192.168.20.0子网域内，搭建一个小型的dnsmasq服务器。以下是网络拓扑图。  在本次教程中我将记录搭建上图中的DNS_vm服务器。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/2019-10-09-010907.png">
-<meta property="og:updated_time" content="2019-10-08T23:21:53.927Z">
+<meta property="og:updated_time" content="2019-10-09T08:44:15.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建DHCP服务器">
 <meta name="twitter:description" content="前言在前面两篇博客中【搭建网关服务器】和【搭建DHCP服务器】，我们的模拟网络基本可以正常使用了，但是有一个问题，因为不是正常的公网，所以域名不能随便指定，要想做到域名自定义，我们需要在“公网”，即192.168.20.0子网域内，搭建一个小型的dnsmasq服务器。以下是网络拓扑图。  在本次教程中我将记录搭建上图中的DNS_vm服务器。">
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  130
+                  490
                 </span>
               
 
@@ -417,6 +417,34 @@
 <p><img src="/images/2019-10-09-010907.png" alt></p>
 <p>在本次教程中我将记录搭建上图中的DNS_vm服务器。</p>
 <a id="more"></a>
+
+<h3 id="一、安装dnsmasq"><a href="#一、安装dnsmasq" class="headerlink" title="一、安装dnsmasq"></a><strong>一、安装dnsmasq</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ yum install dnsmasq</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停用防火墙</span></span><br><span class="line">$ systemctl stop firewalld</span><br><span class="line">$ systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、配置dnsmasq服务器网卡"><a href="#二、配置dnsmasq服务器网卡" class="headerlink" title="二、配置dnsmasq服务器网卡"></a><strong>二、配置dnsmasq服务器网卡</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"><span class="comment"># BOOTPROTO=dhcp</span></span><br><span class="line">BOOTPROTO=static		<span class="comment"># 设置为静态IP</span></span><br><span class="line">IPADDR=192.168.10.254</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.10.1 </span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens33</span><br><span class="line">UUID==e82ac7cd-86d2-40c0-8d33-8f8c8c94486c</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=yes</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、添加系统DNS"><a href="#三、添加系统DNS" class="headerlink" title="三、添加系统DNS"></a><strong>三、添加系统DNS</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/resolv.conf</span><br><span class="line"></span><br><span class="line">	nameserver 114.114.114.114</span><br><span class="line">	nameserver 8.8.8.8</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、配置dnsmasq-conf"><a href="#四、配置dnsmasq-conf" class="headerlink" title="四、配置dnsmasq.conf"></a><strong>四、配置dnsmasq.conf</strong></h3><p>dnsmasq的主配置文件为<code>/etc/dnsmasq.conf</code> 一大堆的东西，看着就头大，但是正真要配置的东西不多。主要是一下几点。</p>
+<ul>
+<li><p>配置 dnsmasq 的上游 dns 服务器；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resolv-file=/etc/resolv.conf	<span class="comment"># 默认读取/etc/resolv.conf文件里的DNS为上游DNS</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确保注释掉 <code>no-hosts</code>，默认情况下这是注释掉的, dnsmasq 会首先寻找本地的 hosts 文件再去寻找缓存下来的域名, 最后去上游 dns 服务器寻找。</p>
+</li>
+<li><p>设置 dnsmasq 需要监听的 IP 地址, 让其他服务器能够找到。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen-address=192.168.10.254, 127.0.0.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>让内网私有地址也能解析，注释掉<code>stop-dns-rebind</code></p>
+</li>
+</ul>
+<h3 id="五、解析自定义域名"><a href="#五、解析自定义域名" class="headerlink" title="五、解析自定义域名"></a><strong>五、解析自定义域名</strong></h3><p>将要解析的自定义域名写入<code>/etc/hosts</code>文件中，注意：自定义域名不要选择公网已有的域名，最好选择公网不存在的后缀。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/hosts</span><br><span class="line"></span><br><span class="line">	192.168.10.1  out.vm</span><br><span class="line">	192.168.10.2  gate-a.vm</span><br><span class="line">	192.168.10.3  gate-b.vm</span><br></pre></td></tr></table></figure>
+
+<h3 id="六、重启服务"><a href="#六、重启服务" class="headerlink" title="六、重启服务"></a><strong>六、重启服务</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl start dnsmasq</span><br><span class="line">$ systemctl <span class="built_in">enable</span> dnsmasq</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -600,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、安装dnsmasq"><span class="nav-number">2.</span> <span class="nav-text">一、安装dnsmasq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、配置dnsmasq服务器网卡"><span class="nav-number">3.</span> <span class="nav-text">二、配置dnsmasq服务器网卡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、添加系统DNS"><span class="nav-number">4.</span> <span class="nav-text">三、添加系统DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、配置dnsmasq-conf"><span class="nav-number">5.</span> <span class="nav-text">四、配置dnsmasq.conf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、解析自定义域名"><span class="nav-number">6.</span> <span class="nav-text">五、解析自定义域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、重启服务"><span class="nav-number">7.</span> <span class="nav-text">六、重启服务</span></a></li></ol></div>
             
 
           </div>
@@ -634,7 +662,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.1k</span>
+    <span title="Site words total count">9.6k</span>
   
 </div>
 

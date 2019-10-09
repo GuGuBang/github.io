@@ -126,7 +126,7 @@
 <meta property="og:description" content="前言上一篇博客【搭建网关服务器】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。  在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/2019-10-09-010907.png">
-<meta property="og:updated_time" content="2019-10-08T23:21:53.923Z">
+<meta property="og:updated_time" content="2019-10-09T08:44:15.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建DHCP服务器">
 <meta name="twitter:description" content="前言上一篇博客【搭建网关服务器】，我们搭建了网关服务器，有了网关服务器，内网中的所有流量就可以通过网关服务器转发到外面去，但是每个内网中的机器都要手动配置iP，比较麻烦，所有我们搭建一台DHCP服务器，统一配置iP，以下是网络拓扑图。  在本次教程中我将记录上图中的DHCP_vm服务器的搭建过程。">
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  244
+                  366
                 </span>
               
 
@@ -421,10 +421,15 @@
 <p><strong>1. 安装dhpd服务</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install dhcp</span><br></pre></td></tr></table></figure>
 
-<p><strong>2. 编辑配置文件</strong></p>
+<p><strong>2. 配置dhcp服务器网卡</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"><span class="comment"># BOOTPROTO=dhcp</span></span><br><span class="line">BOOTPROTO=static		<span class="comment"># 设置为静态IP</span></span><br><span class="line">IPADDR=172.16.11.2</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens33</span><br><span class="line">UUID=e82ac7cd-86d2-40c0-8d33-8f8c8c94486c</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=yes</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.编辑dhcpd配置文件</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/dhcp/dhcpd.conf</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># DHCP Server Configuration file.</span></span><br><span class="line"><span class="comment">#   see /usr/share/doc/dhcp*/dhcpd.conf.example</span></span><br><span class="line"><span class="comment">#   see dhcpd.conf(5) man page</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">ddns-update-style interim;</span><br><span class="line">subnet 172.16.11.0 netmask 255.255.255.0 &#123;</span><br><span class="line">        option routers                  172.16.11.1;</span><br><span class="line">        option subnet-mask              255.255.255.0;</span><br><span class="line">        option domain-name-servers       114.114.114.114, 8.8.8.8;</span><br><span class="line">        range 172.16.11.10 172.16.11.99;</span><br><span class="line">        default-lease-time 3600;</span><br><span class="line">        max-lease-time 7200;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># DHCP Server Configuration file.</span></span><br><span class="line"><span class="comment">#   see /usr/share/doc/dhcp*/dhcpd.conf.example</span></span><br><span class="line"><span class="comment">#   see dhcpd.conf(5) man page</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">ddns-update-style interim;</span><br><span class="line">default-lease-time 3600;	<span class="comment">#默认租约时间</span></span><br><span class="line">max-lease-time 7200;	<span class="comment">#最大租约时间</span></span><br><span class="line"></span><br><span class="line">subnet 172.16.11.0 netmask 255.255.255.0 &#123;</span><br><span class="line">        option routers                  172.16.11.1;</span><br><span class="line">        option subnet-mask              255.255.255.0;</span><br><span class="line">        option domain-name-servers      192.168.10.254;</span><br><span class="line">        range 172.16.11.10 172.16.11.99;</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 设置网关服务器内网网卡IP</span></span><br><span class="line">        host gateway_a &#123;</span><br><span class="line">                hardware ethernet 00:0c:29:f7:90:77;</span><br><span class="line">                fixed-address  172.16.11.1;</span><br><span class="line">                option domain-name-servers      192.168.10.254;</span><br><span class="line">                option routers                  0.0.0.0;	<span class="comment"># 不配置网关服务器内网网卡的网关</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>3. 重启dhcpd</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl start dhcpd</span><br><span class="line">$ systemctl <span class="built_in">enable</span> dhcpd</span><br><span class="line">$ systemctl status dhcpd   <span class="comment"># 查看服务状态</span></span><br></pre></td></tr></table></figure>
@@ -649,7 +654,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.1k</span>
+    <span title="Site words total count">9.6k</span>
   
 </div>
 
