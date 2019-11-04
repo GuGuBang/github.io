@@ -117,18 +117,18 @@
 
 
 
-<meta name="description" content="安装12$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm$ yum install -y nginx">
+<meta name="description" content="安装12$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm$ yum install -y nginx  启动12$ systemctl start nginx.service$ systemctl enable nginx.service  配置">
 <meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建Nginx服务器">
 <meta property="og:url" content="http://yoursite.com/搭建Nginx服务器/index.html">
 <meta property="og:site_name" content="GuGuBang Blog">
-<meta property="og:description" content="安装12$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm$ yum install -y nginx">
+<meta property="og:description" content="安装12$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm$ yum install -y nginx  启动12$ systemctl start nginx.service$ systemctl enable nginx.service  配置">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-04T09:35:19.899Z">
+<meta property="og:updated_time" content="2019-11-04T10:03:35.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建Nginx服务器">
-<meta name="twitter:description" content="安装12$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm$ yum install -y nginx">
+<meta name="twitter:description" content="安装12$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm$ yum install -y nginx  启动12$ systemctl start nginx.service$ systemctl enable nginx.service  配置">
 
 
 
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  311
+                  405
                 </span>
               
 
@@ -413,19 +413,26 @@
       
         <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line">$ yum install -y nginx</span><br></pre></td></tr></table></figure>
 
-<a id="more"></a>
-
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a><strong>启动</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl start nginx.service</span><br><span class="line">$ systemctl <span class="built_in">enable</span> nginx.service</span><br></pre></td></tr></table></figure>
 
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a><strong>配置</strong></h3><p>网站文件默认存放目录 <code>/usr/share/nginx/html</code></p>
 <p>网站默认站点配置 <code>/etc/nginx/conf.d/default.conf</code></p>
 <p>自定义Nginx站点配置文件存放目录 <code>/etc/nginx/conf.d/</code></p>
 <p>Nginx全局配置  <code>/etc/nginx/nginx.conf</code></p>
+<a id="more"></a>
+
 <ul>
 <li><p><strong>HTTP 配置网站：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/conf.d/default.conf</span><br><span class="line">  </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">          server_name  nginx.vm;  <span class="comment"># 域名</span></span><br><span class="line">          location / &#123;</span><br><span class="line">              root    /var/www/hexo; <span class="comment"># 网站根目录</span></span><br><span class="line">              index  index.html index.htm;</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/conf.d/default.conf</span><br><span class="line">  </span><br><span class="line">    server &#123;</span><br><span class="line">        listen  80;	<span class="comment"># 监听端口</span></span><br><span class="line">        server_name  nginx.vm;  <span class="comment"># 域名</span></span><br><span class="line">        location / &#123;</span><br><span class="line">            root    /var/www/hexo; <span class="comment"># 网站根目录</span></span><br><span class="line">            index  index.html index.htm; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>HTTPS 配置网站：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/conf.d/default.conf</span><br><span class="line"></span><br><span class="line">	server &#123;</span><br><span class="line">        listen       443 ssl; <span class="comment"># 监听端口</span></span><br><span class="line">        server_name  nginx.vm; <span class="comment"># 域名</span></span><br><span class="line">        ssl_certificate /tmp/nginx.vm.crt; <span class="comment"># 公钥</span></span><br><span class="line">        ssl_certificate_key /tmp/nginx.vm.key; <span class="comment"># 私钥</span></span><br><span class="line">        keepalive_timeout   70;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line">        <span class="comment">#access_log  /var/log/nginx/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">         <span class="comment">#  root   /usr/share/nginx/html;</span></span><br><span class="line">            root    /var/www/hexo;	<span class="comment"># 网站根目录</span></span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>HTTP跳转HTTPS</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen  80;</span><br><span class="line">    server_name nginx.vm;</span><br><span class="line">    <span class="comment"># http 跳转 https</span></span><br><span class="line">    rewrite ^(.*) https://<span class="variable">$server_name</span><span class="variable">$1</span> permanent; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><strong>常见问题</strong></h3><ul>
@@ -587,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -664,7 +671,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10.6k</span>
+    <span title="Site words total count">10.7k</span>
   
 </div>
 
